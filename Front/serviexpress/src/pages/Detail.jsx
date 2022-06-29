@@ -136,7 +136,7 @@ export default function Detail(){
 
    
     return <div className={stylesDetail.container}>
-        <NavBar></NavBar>
+        <NavBar aux={true}></NavBar>
           <div>
          {/*    <ServicesBar></ServicesBar> */}
           </div>
@@ -170,10 +170,13 @@ export default function Detail(){
                <p> {detail.date}</p>
 
            </div>
-          <div>      
+
+          {userLogin.id ? <div>      
           <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}  icon={<ShoppingCartIcon/>} onClick={handleAddToOrder} />
               <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} {...label} checked={checked} icon={<FavoriteBorder />} onClick={favClicked} onChange={heartChange} checkedIcon={<Favorite />} />
-          </div>
+          </div> 
+            : null
+          }
         </div>
 
         <div className={stylesDetail.carousel}>
@@ -236,7 +239,7 @@ export default function Detail(){
         </div>
        
         </div>
-          <CardSellerDetail userid={detail.userId}></CardSellerDetail>
+          <CardSellerDetail userid={detail.userId} userLogin={userLogin}></CardSellerDetail>
         </div>
 
      <Footer></Footer>

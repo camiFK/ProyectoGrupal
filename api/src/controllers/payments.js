@@ -1,4 +1,4 @@
-const {getPayments, postPayment, postMercadopago, postMercadopagoSuccess2} = require('../services/payments');
+const {getPayments, postPayment, postMercadopago, postMercadopagoSuccess2, getTodayPayments} = require('../services/payments');
 const {BAD_REQUEST, CREATED, OK} = require('../routes/helpers/status.js')
 
 exports.getPayments = async (req, res, next) => {
@@ -56,6 +56,15 @@ exports.postMercadopagoSuccess = async(req,res,next ) => {
   }
 };
 
+
+exports.getTodayPayments = async (req,res,next) => {
+  try {
+    const r = await getTodayPayments();
+    res.status(OK).json(r)
+  } catch (error) {
+    next(error)
+  }
+}
 
 /* 
 exports.getServiceById =async (req, res, next) => {

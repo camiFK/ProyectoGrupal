@@ -7,15 +7,28 @@ import ContactCard from './ContactCard';
 import { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { getUserById } from '../redux/action';
-
+import swal from 'sweetalert';
 import Button from '@mui/material/Button';
 
-export default function CardSellerDetail({userid}){
+export default function CardSellerDetail({userid, userLogin }){
 
     const [show,setShow] = useState();
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        if (userLogin.id) setShow(true);
+        else {
+          swal({
+            title: "Error",
+            text: "You are not logged in",
+            icon: "error",
+            button: "Accept"
+  
+  
+          })
+        }
+
+    };
 
 
     const dispatch = useDispatch();

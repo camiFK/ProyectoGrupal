@@ -21,18 +21,16 @@ import MercadoPagoSuccess from "./components/MercadoPagoSuccess.jsx";
 import MyOrders from "./pages/MyOrders.jsx";
 import Checkout from "./pages/Checkout/CheckoutForm.js";
 import Profile from "./pages/Profile.jsx";
-import {
-  ListOrders,
-  ListSellerChats,
-} from "./components/ProfileComponents/ListProfile";
+import {ListOrders,ListSellerChats, ListBuyerReputation, ListSellerReputation} from './components/ProfileComponents/ListProfile';
 import CustomerSupport from "./pages/CustomerSupport.jsx";
+import Review from "./pages/Review.jsx";
 
 function App() {
   const { rdcr_isAuth } = useSelector((state) => state);
   return (
     <Routes>
       {rdcr_isAuth && <Route exact path="/orders" element={<MyOrders />} />}
-      {rdcr_isAuth && <Route exact path="/favorites" element={<Favorites />} />}
+      {rdcr_isAuth && <Route exact path="/favorites/:id" element={<Favorites />} />}
       {rdcr_isAuth && (
         <Route exact path="/seller/add-service" element={<CreateService />} />
       )}
@@ -60,7 +58,10 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/profile/chats" element={<ListSellerChats />} />
       <Route path="/profile/orders" element={<ListOrders />} />
+      <Route path="/profile/seller-reputation" element={<ListSellerReputation />} />
+      <Route path="/profile/buyer-reputation" element={<ListBuyerReputation />} />
       <Route path="/support" element={<CustomerSupport />} />
+      <Route path="/review" element={<Review />} />
     </Routes>
   );
 }

@@ -78,8 +78,128 @@ color: #000000;
 .homepaginate {
     gap: 1rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 30px 0;
-}
+    flex-direction: row;
+
+
+    .MainSidebar {
+      // background-color: green;
+      width: 20%;
+      padding: 3rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .MainCards {
+      // background-color: blue;
+      width: 80%;
+
+      .homepaginate {
+        width: 100%;
+        margin: 3rem auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .serviceshome {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 3rem;
+        justify-content: space-around;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      // background-color: blue;
+      flex-direction: column;
+
+      .MainSidebar {
+        width: 100%;
+      }
+
+      .MainCards {
+        width: 100%;
+      }
+
+    }
+    
+    @media (max-width: 480px) {
+      // background-color: red;
+    }
+  }
+
+
+// .serviceshome {
+//     zoom: 100%;
+//     display: grid;
+//     grid-template-columns: repeat(3, 0.1fr);
+//     position: relative;
+//     justify-content: center;
+//     gap: 1em;
+//     margin-left: 10%;
+//   }
+
+// .switchs{
+//   position:absolute;
+//   // background-color: #FCDC3C;
+//   width: 140px;
+//   margin-left: 3%;
+//   margin-top: 13%;
+// }
+
+// .container{
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   min-height: 100vh;
+//   text-align: center;
+//   justify-content: space-between;
+// }
+
+// .filterservice{
+// // box-sizing: border-box;
+// position: relative;
+// display: flex;
+// margin-top: 30px;
+// margin-bottom: 30px;
+// justify-content: space-between ;
+// text-align: center;
+
+// margin-inline: 3%;
+// background: #FCDC3C;
+// // border: 1px solid #0c0c0c;
+// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+// border-radius: 20px;
+// padding: 0.8em 1.5em;
+// font-family: "Roboto","Helvetica","Arial",sans-serif;;
+// font-style: normal;
+// font-size: 10px;
+// color: #000000;
+// }
+
+// .filtername{
+//   cursor: pointer;
+//   font-size: 17px;
+
+// }
+// .filtername:hover{
+//   transform: scale(1.1);
+// }
+
+//   .divpag{
+//     display: grid;
+//     grid-template-columns: repeat(4, 1fr);
+//     height: 100px;
+//     justify-content: center;
+//     gap: 1em;
+
+//     /* margin-left: 150px; */
+//     /* grid-template-rows: auto; */
+//   justify-items: center;
+//   }
+
+//   .divcarousel{
+//  width: 300px;
+//  margin: 30px;
+//   }

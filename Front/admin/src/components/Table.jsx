@@ -70,7 +70,7 @@ const List = () => {
 
   useEffect(() => {
     dispatch(getOrders())
-  },[dispatch, orders])
+  },[dispatch])
 
 
   return (
@@ -83,7 +83,6 @@ const List = () => {
             <TableCell className="tableCell">Customer</TableCell>
             <TableCell className="tableCell">Date</TableCell>
             <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Payment Method</TableCell>
             <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
@@ -100,7 +99,6 @@ const List = () => {
               <TableCell className="tableCell">{`${row.user.last_name}, ${row.user.name}`}</TableCell>
               <TableCell className="tableCell">{row.service_date}</TableCell>
               <TableCell className="tableCell">{row.publication.price}</TableCell>
-              <TableCell className="tableCell">{row.method}</TableCell>
               <TableCell className="tableCell">
                 <span className={`status ${row.status}`}>{row.status}</span>
               </TableCell>

@@ -4,17 +4,23 @@ import ProfileId from './ProfileId';
 import styles from '../styles/ListProfile.module.scss';
 import Chat from './Chat';
 import Orders from './Orders';
-import {getUser} from '../../redux/action';
+import ReputationBuyer from "./ReputationBuyer";
+import ReputationSeller from "./ReputationSeller";
+import {getUser,getBudgets} from '../../redux/action';
 import {useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
+
 
 export const ListProfile = () => {
 
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user);
+    const user = useSelector(state => state.user);  
+    const budgets = useSelector(state => state.budgetsId);
+
 
     useEffect(() => {
       dispatch(getUser());
+      dispatch(getBudgets(user.id));
 
     },[dispatch])
 
@@ -37,7 +43,7 @@ export const ListBuyerReputation = () => {
             <Navbar />
             <div className={styles.container}>
             <SideBarProfile></SideBarProfile>
-            
+            <ReputationBuyer></ReputationBuyer>
             </div>
 
 
@@ -61,20 +67,21 @@ export const ListBuyerNotifications = () => {
 
 };
 
-export const ListSellerNotifications = () => {
-    return <div>    
-            <Navbar />
-            <div className={styles.container}>
-            <SideBarProfile></SideBarProfile>
-           
-            </div>
+export const ListSellerReputation = () => {
+  return <div>    
+          <Navbar />
+          <div className={styles.container}>
+          <SideBarProfile></SideBarProfile>
+          <ReputationSeller></ReputationSeller>
+          </div>
 
 
 
-    </div>
+  </div>
 
 
 };
+
 
 export const ListSellerChats = () => {
     
@@ -92,8 +99,8 @@ export const ListSellerChats = () => {
     return <div>    
             <Navbar />
             <div className={styles.container}>
-            <SideBarProfile></SideBarProfile>
-             <Chat  id={user.id} ></Chat>
+            <SideBarProfile ></SideBarProfile>
+             <Chat id={user.id} ></Chat>
             </div>
 
 
@@ -104,11 +111,26 @@ export const ListSellerChats = () => {
 };
 
 export const ListOrders = () => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user);  
+    const budgets = useSelector(state => state.budgetsId);
+
+
+    useEffect(() => {
+      dispatch(getUser());
+      dispatch(getBudgets(user.id));
+
+
+    },[dispatch,user.id])
+
+
+
+
     return <div>    
             <Navbar />
             <div className={styles.container}>
             <SideBarProfile></SideBarProfile>
-            <Orders></Orders>
+            <Orders budgets={budgets}></Orders>
             </div>
 
 

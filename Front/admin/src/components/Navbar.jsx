@@ -5,7 +5,7 @@ import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlin
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import SwitchDark from "../components/Elements/SwitchDark";
 
 const Navbar = () => {
@@ -14,10 +14,10 @@ const Navbar = () => {
   return (
     <div className="navbarr">
     <div className="wrapper">
-      <div className="search">
+      {/* <div className="search">
         <input type="text" placeholder="Search..." />
         <SearchIcon />
-      </div>
+      </div> */}
       <div className="items">
         <div className="itemm">
           <SwitchDark/>

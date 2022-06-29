@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const { getPayments, postPayment, postMercadopago, postMercadopagoSuccess } = require('../controllers/payments.js');
+const { getPayments, postPayment, postMercadopago, postMercadopagoSuccess , getTodayPayments} = require('../controllers/payments.js');
 
 const router = Router();
 
 router.get('/', getPayments);
+router.get('/today',getTodayPayments);
 router.post('/', postPayment);
 router.post('/mercado', postMercadopago);
 router.post('/mercado/success', postMercadopagoSuccess);

@@ -7,8 +7,9 @@ export default function PaginationHome({value,pagination,items,pages}){
     const handle = (event, value) => {pagination(value)}
 
    
-    return  <div>
-            <Pagination variant="outlined" shape="rounded" count={pages} defaultPage={1} size="large" onChange={handle}/>
-            </div>
-
+    return (
+         <div>
+         <Pagination variant="outlined" shape="rounded" count={pages} defaultPage={1} size="large" onChange={handle}/>
+         </div>
+    )
 };

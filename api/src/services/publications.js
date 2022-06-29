@@ -208,3 +208,20 @@ exports.getPublicationsByUserId = async (id) => {
   }
   return { err_message: 'User not found' };
 };
+
+exports.getPublicationsByYear = async () => {
+  var totalPublications = [];
+  const years=[2017,2018,2019,2020,2021,2022]
+  for(let i=0;i<years.length;i++){
+    var el={"year":years[i]}
+    const pubs = await Publication.findAll({
+      raw:true
+    });
+    const publications = pubs.filter((elem)=> {
+      return elem.date.getFullYear() === years[i]
+    })
+    el.total=publications.length
+    totalPublications.push(el)
+  }
+  return totalPublications
+}

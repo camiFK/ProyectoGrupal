@@ -10,7 +10,13 @@ export const GET_STRIPE = "GET_STRIPE";
 export const FAVORITE_CHECK = "FAVORITE_CHECK";
 export const SEND_BUDGET = "SEND_BUDGET";
 export const POST_CHAT = "POST_CHAT";
-export const GET_CHAT = " GET_CHAT";
+export const  GET_CHAT = " GET_CHAT";
+export const GET_BUDGETS = "GET_BUDGETS";
+export const CREATE_USER_CHAT = "CREATE_USER_CHAT";
+export const CREATE_USER_CHAT_ENGINE = 'CREATE_USER_CHAT_ENGINE'; 
+
+
+
 
 export const types = {
   ADD_TO_CART: "ADD_TO_CART",
@@ -297,7 +303,10 @@ export function getPublicationsByCategory(a) {
         payload: response.data,
       });
     } catch (error) {
-      console.log("SERVICES NO FOUND");
+      swal({
+        icon: "error",
+        text: 'Sorry! There are no publications yet.',
+      })
     }
   };
 }
@@ -373,14 +382,6 @@ export function confirmPassword(form) {
   };
 }
 
-export function myLocalStorageTwo() {
-  //Ojo al piojo:: hay 2 de estas cuidado se cruzen
-  let productsInLocalStorage = localStorage.getItem("itemCar");
-  productsInLocalStorage = JSON.parse(productsInLocalStorage);
-  console.log(productsInLocalStorage);
-  return productsInLocalStorage;
-}
-
 export function getErrorRegister() {
   return async (dispatch) => {
     try {
@@ -431,7 +432,7 @@ export function getMercadoPago(title, price, contractId,usremail) {
 export function sendEmail({ email, type }) {
   return async (dispatch) => {
     try {
-      console.log(type);
+  
       const { data } = await axios.post(`/email?type=${type}`, {
         email,
       });
@@ -541,7 +542,7 @@ export function act_getPublicationByUser(pId) {
 export function postForm2(input) {
   return async (dispatch) => {
     try {
-      console.log('post-form2')
+    
       let checkoutform = await axios.post(`/contracts`, input);
       dispatch({ type: "POST_FORM2", payload: checkoutform.data });
     } catch (error) {
@@ -554,9 +555,14 @@ export function filterprice(value) {
   return (dispatch) => {
     try {
       let response = value
+   
+
       dispatch({ type: "FILTER_PRICE", payload: response });
     } catch (error) {
-      console.log(error);
+      swal({
+        icon: "error",
+        text: 'Sorry! There are no publications yet.',
+      })
     }
   };
 }
@@ -603,13 +609,13 @@ export function postChat(budgetId, comment, id_sender, id_receiver){
     }
 };
 
-export function getChat(id){
+export function getChat(id,idOrder){
     return async (dispatch) => {
         const chat = await axios.get('/budgets/chat/'+id);
-        
+        const filtered = chat.data.filter(e => e.id == idOrder);
         dispatch({
           type: GET_CHAT,
-          payload: chat.data,
+          payload: filtered[0].chats,
         })
     }
 };
@@ -638,7 +644,115 @@ export const act_putPublication = async (pId, pOform) => {
     } catch (error) {
       console.log(error);
     }
-}
+};
+
+export function getBudgets (id) {
+    return async (dispatch) => {
+
+      try {
+        const {data} = await axios.get(`/budgets`);
+        const filtered =  data.filter(e => e.id_seller === id);
+        
+        dispatch({
+          type: GET_BUDGETS,
+          payload: filtered,
+
+        })
+    
+      } catch (error) {
+        console.log(error);
+      }
+    
+
+
+
+    } 
+
+
+};
+
+
+export function createUserChat(user,userName,text,pass) {
+
+  return async () => {
+      
+      try {
+          const chat = await axios.put('https://api.chatengine.io/chats/',
+          {
+            usernames: [userName],
+            title: "I want a budget",
+            is_direct_chat: false
+
+            
+        },{
+          headers: {
+          'Project-ID': process.env.REACT_APP_CHAT_ORDERS_ID,
+          "User-Name": user,
+          "User-Secret": pass,
+        
+        },
+        }
+          
+          );
+
+
+       
+      try {
+         await axios.post(`https://api.chatengine.io/chats/${chat.data.id}/messages/`,
+        {
+          text: text,
+
+          
+      },{
+        headers: {
+        'Project-ID': process.env.REACT_APP_CHAT_ORDERS_ID,
+        "User-Name": user,
+        "User-Secret": pass,
+      
+      },
+      }
+        
+        );
+  
+      
+    } catch (error) {
+        console.log(error);
+    }
+
+      } catch (error) {
+          console.log(error);
+      }
+  }
+};
+
+
+
+export function getMyChat(user,pass) {
+
+  return async (dispatch) => {
+
+      try {
+        const chat =  await axios.get('https://api.chatengine.io/chats/',{
+          headers: {'Project-ID': process.env.REACT_APP_CHAT_ENGINE_PRIVATE_KEY,
+          "User-Name": user,
+          "User-Secret": pass,
+          }
+        });
+        
+      
+        
+      } catch (error) {
+          console.log(error);
+      }
+
+
+
+
+  }
+
+
+
+};
 
 export function getMyOrders() {
   return async (dispatch) => {
@@ -653,3 +767,38 @@ export function getMyOrders() {
     }
   };
 }
+
+export function postReview(id) {
+   return async (dispatch) => {
+    try {
+      const review = await axios.post(`/contracts/review/${id}`);
+      dispatch({
+        type: "POST_REVIEW",
+        payload: review.data,
+      });  
+    } catch (error) { console.log(error) }
+   }
+}
+
+
+export function createUserChatEngine(email,pass){
+    return async () => {
+        try {
+          await axios.put('https://api.chatengine.io/users/',{
+            
+              username: email,
+              secret: pass
+          
+          },{
+            headers: {
+            'PRIVATE-KEY': process.env.REACT_APP_CHAT_ENGINE_PRIVATE_KEY
+
+          }
+          })
+
+          
+        } catch (error) {
+          console.log(error);
+        }
+    }
+};

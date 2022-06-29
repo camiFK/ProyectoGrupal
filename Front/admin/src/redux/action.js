@@ -229,3 +229,102 @@ export function getOrders(){
 
 
 };
+
+export function getPublications(){
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/publications`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      
+      dispatch({
+        type: "GET_ALL_PUBLICATIONS",
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function getContractsPercentage(){
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/contracts/percentage`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      
+      dispatch({
+        type: "GET_CONTRACTS_PERCENTAGE",
+        payload: data,
+      });
+      console.log(data,parseInt(data))
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function getTodayPayments(datas){
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/payments`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      if(datas === 'all'){
+        dispatch({
+          type: "GET_PAYMENTS_TODAY",
+          payload: data,
+        });
+      }
+      if(datas === 'length'){
+        dispatch({
+          type: "GET_PAYMENTS_TODAY_LENGTH",
+          payload: data,
+        });
+      }
+      if(datas === 'amount'){
+        dispatch({
+          type: "GET_PAYMENTS_TODAY_AMOUNT",
+          payload: data,
+        });
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function getPublicationByYear(){
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/publications/year`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      
+      dispatch({
+        type: "GET_PUBLICATIONS_YEAR",
+        payload: data,
+      });
+      
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}

@@ -67,7 +67,7 @@ const Sidebar = () => {
             <span>Orders</span>
           </li>
           </Link>
-          <p className="title">USEFUL</p>
+          {/* <p className="title">USEFUL</p>
           <li>
             <QueryStatsIcon className="iconn" />
             <span>Stats</span>
@@ -75,20 +75,20 @@ const Sidebar = () => {
           <li>
             <NotificationsNoneIcon className="iconn" />
             <span>Notifications</span>
-          </li>
+          </li> */}
           <p className="title">SERVICE</p>
           <li onClick={() => {xNavigate('/attendance')}}>
             <SupportAgentIcon className="iconn" />
             <span>Customer Support</span>
           </li>
-          <li>
+          {/* <li>
             <SettingsSystemDaydreamIcon className="iconn" />
             <span>System Health</span>
           </li>
           <li>
             <DisplaySettingsIcon className="iconn" />
             <span>Logs</span>
-          </li>
+          </li> */}
           <li>
             <SettingsIcon className="iconn" />
             <span>Settings</span>

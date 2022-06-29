@@ -5,12 +5,12 @@ import logos from '../../media/logos.png'
 
 const FooterBar = () => {
   return (
-    <div className={Styles.footerctn}>
+    <footer className={Styles.footerctn}>
           <MDBContainer fluid>
           &copy; 2022 Copyright: ServiExpress 
          <img className={Styles.footerlogos} src={logos}/>
         </MDBContainer>
-    </div>
+    </footer>
   )
 }
 

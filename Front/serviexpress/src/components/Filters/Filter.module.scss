@@ -1,3 +1,8 @@
+.filter {
+    width: 100%;
+    background-color: white;
+    height: 40px;
+}
 // .filtercat {
 //     width: 100%;
 //     background-color: white;
@@ -10,6 +15,7 @@
     margin-top: 10px;
 }
 
+.tabs{ 
 .tabsf{ 
 width: 100%;
 background-color: #fcdc3c;
@@ -17,6 +23,7 @@ margin-top: 20px;
 padding:5px;
 }
 
+.tab{
 .tabf{
 font-size: 12;
 color: black;
@@ -71,4 +78,5 @@ font-weight: 500;
    }
    .select-css option {
     font-weight:normal;
-   }
+   } 
+}}

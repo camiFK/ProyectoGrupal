@@ -118,6 +118,19 @@ exports.postMercadopagoSuccess2 = async (codigoPago ,title,price,contractId,usre
   sendBuyerMail(usremail,title,price);
 }
 
+exports.getTodayPayments = async () => {
+  const TODAY_START = new Date().setHours(0,0,0,0);
+  const NOW = new Date();
+  const payments = await Payment.findAll({
+    where:{
+      date: {
+        [Op.gt]: TODAY_START,
+        [Op.lt]: NOW
+      }
+    }
+  })
+  return payments;
+}
 
 /* 
 exports.getServiceById=async(id)=>{

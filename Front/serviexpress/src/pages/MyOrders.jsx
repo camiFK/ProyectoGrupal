@@ -4,13 +4,18 @@ import FooterBar from '../components/FooterBar/FooterBar'
 import Styles from './styles/MyOrder.module.scss'
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
-import { getMyOrders } from '../redux/action';
+import { getMyOrders, postReview } from '../redux/action';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { Button } from '@mui/material';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
+
 
 const MyOrders = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getMyOrders())
@@ -24,7 +29,7 @@ const MyOrders = () => {
     {
       field: 'service',
       headerName: 'SERVICE',
-      width: 250,
+      width: 280,
       editable: false,
     },
     {
@@ -37,18 +42,23 @@ const MyOrders = () => {
       field: 'status',
       headerName: 'STATUS',
       sortable: true,
-      width: 120,
+      width: 150,
     },
   ];
+
   
   const rows = myorders?.map(order => {
     return {
       id: order.id,
       price: order.publication.price,
       service: order.publication.title,
-      status: 'completed',
+      status: order.status
     }
   }) 
+
+  const handleClick = () => {
+    navigate('/review')
+  }
 
   return (
     <div className={Styles.container}>
@@ -58,17 +68,19 @@ const MyOrders = () => {
         <h1 className={Styles.title}>My orders: </h1>
 
    
-        <div style={{ height: 400, width: '60%' }}>
+        <div style={{ height: 400, width: '55%' }}>
        <DataGrid
        
        showCellRightBorder
        showColumnRightBorder
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+       rows={rows}
+       columns={columns}
+       pageSize={5}
+       rowsPerPageOptions={[3]}
       />
       </div>
+      <Button variant="contained" color="success" sx={{marginTop: '30px'}} onClick={handleClick}>
+        Submit a review</Button>
         </div>
 
         <FooterBar />

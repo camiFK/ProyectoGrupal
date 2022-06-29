@@ -57,7 +57,8 @@ export default function AddressForm() {
     city: '',
     postal_code: '',
     service_date: new Date(),
-    time: ''
+    time: '',
+    status: ''
   }) 
   
   function handleChange(e) {

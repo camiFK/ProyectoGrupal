@@ -7,7 +7,8 @@ const {
   updatePublication,
   getPublicationsByTitle,
   getPublicationsByCategory,
-  getPublicationsByUserId
+  getPublicationsByUserId,
+  getPublicationsByYear
 } = require('../services/publications.js');
 
 exports.getPublications = async (req, res, next) => {
@@ -182,3 +183,16 @@ exports.getPublicationsByUserId = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getPublicationsByYear = async (req,res,next) => {
+  try {
+    const r = await getPublicationsByYear();
+    if (r.err_message) {
+      res.status(BAD_REQUEST).send(r.err_message);
+    } else {
+      res.status(OK).json(r);
+    }
+  } catch (error) {
+    next(error);
+  }
+}

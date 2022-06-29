@@ -21,7 +21,7 @@ const EmailForm = (props) => {
         },
         {
           headers: {
-            "PRIVATE-KEY": process.env.REACT_APP_CHAT_ENGINE_PRIVATE_KEY,
+            "PRIVATE-KEY": '01196a8a-83f0-4de6-80ee-df25c590ae95',
           },
         }
       );
@@ -42,7 +42,7 @@ const EmailForm = (props) => {
         },
         {
           headers: {
-            "Project-ID": process.env.REACT_APP_CHAT_ENGINE_PROJECT_ID,
+            "Project-ID": 'a937c2a4-688e-4dd6-be3e-018b9dff09fb',
             "User-Name": email,
             "User-Secret": email,
           },

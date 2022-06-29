@@ -7,8 +7,8 @@ import SendIcon from '@mui/icons-material/Send';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useState, useEffect } from 'react';
 import {useSelector,useDispatch } from 'react-redux';
-import {useParams , useNavigate} from 'react-router-dom';
-import {getUser,sendBudget,postChat} from '../redux/action'
+import {useParams , useNavigate,Link} from 'react-router-dom';
+import {getUser,sendBudget,postChat,createUserChat,sendMessageChat,getUserById} from '../redux/action'
 import swal from 'sweetalert';
 
 const Input = styled('input')({
@@ -23,7 +23,7 @@ export default function ContactCard({name,perfil,id_seller,handleClose}){
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
     const budget = useSelector(state => state.budget)
-
+    const seller = useSelector(state => state.userId)
 
     const [text, setText] = useState({
       publicationId: id,
@@ -37,17 +37,17 @@ export default function ContactCard({name,perfil,id_seller,handleClose}){
 
       useEffect(() => {
           dispatch(getUser());
+          dispatch(getUserById(id_seller))
 
 
+      },[dispatch,id_seller])
 
-      },[dispatch])
-
-
-
+ 
 
      const handleSubmit = (e) => {
         e.preventDefault();
         
+        if(text.priority && text.comment_request) {
         dispatch(sendBudget(text.publicationId,text.user_request,id_seller,text.comment_request,text.picture_request,text.priority));
         swal({
           title: "Success",
@@ -58,8 +58,50 @@ export default function ContactCard({name,perfil,id_seller,handleClose}){
 
         })
 
+        dispatch(createUserChat(user.email,seller.email,text.comment_request,user.email));
+
         handleClose();
-        //dispatch(postChat(2,text.comment_request,user.id,27));
+      }
+      else if(text.priority && !text.comment_request) {
+        swal({
+          title: "Error",
+          text: "Please write a message into text field",
+          icon: "error",
+          button: "Accept"
+
+
+        })
+
+      }
+      else if(!text.priority && text.comment_request) {
+        swal({
+          title: "Error",
+          text: "Please select the priority",
+          icon: "error",
+          button: "Accept"
+
+
+        })
+
+      }
+
+      else if(!user.id) {
+        swal({
+          title: "Error",
+          text: "You are not logged in",
+          icon: "error",
+          button: "Accept"
+
+
+        })
+
+        navigate('/login');
+      }
+
+
+
+
+     
 
     };
 

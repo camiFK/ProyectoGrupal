@@ -77,6 +77,14 @@ module.exports = (sequelize) => {
           isFloat: true
         }
       },
+      seller_points: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+      },
+      seller_reviews: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+      },
       seller_opinions: {
         type: DataTypes.ARRAY(DataTypes.JSON),
         defaultValue: []

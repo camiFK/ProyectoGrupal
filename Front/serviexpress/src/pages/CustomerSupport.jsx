@@ -6,7 +6,6 @@ import ChatWindow from "../components/SupportWindow/ChatWindow";
 
 const CustomerSupport = () => {
   const refOne = useRef(null);
-  //   let refOne //= useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

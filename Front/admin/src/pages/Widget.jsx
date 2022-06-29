@@ -2,28 +2,40 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles/Widget.scss";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import { act_getUsersCount, getOrders } from '../redux/action.js'
+import { act_getUsersCount, getOrders, act_getAllCategories, act_getAllServices} from '../redux/action.js'
 
 const Widget = ({ type }) => {
-  const { rdcr_users_count, orders } = useSelector((state) => state)  
+  const { rdcr_users_count, orders, rdcr_categories, rdcr_services } = useSelector((state) => state)  
   const dispatch = useDispatch();
 
 
   useEffect(() => {
-    dispatch(act_getUsersCount())
-    dispatch(getOrders())
-  },[dispatch, rdcr_users_count, orders])
+    switch (type) {
+      case "user":{
+        dispatch(act_getUsersCount());
+      }
+      case "orders":{
+        dispatch(getOrders());
+      }
+      case "categories":{
+        dispatch(act_getAllCategories());
+      }
+      case "services":{
+        dispatch(act_getAllServices());
+      }
+    }
+  },[dispatch, type])
 
 
   let data;
   
     //temporary
-    const diff = 20;
+    // const diff = 20;
   
     switch (type) {
       case "user":
@@ -44,7 +56,7 @@ const Widget = ({ type }) => {
           ),
         };
         break;
-      case "order":
+      case "orders":
         data = {
           title: "ORDERS",
           count: orders.length,
@@ -62,13 +74,13 @@ const Widget = ({ type }) => {
           ),
         };
         break;
-      case "earning":
+      case "categories":
         data = {
-          title: "EARNINGS",
-          isMoney: true,
-          link: '/home',
-          count: 100,
-          link_title: "View net earnings",
+          title: "CATEGORIES",
+          isMoney: false,
+          link: '/categories',
+          count: rdcr_categories.length,
+          link_title: "View all categories",
           icon: (
             <MonetizationOnOutlinedIcon
               className="icon"
@@ -77,13 +89,13 @@ const Widget = ({ type }) => {
           ),
         };
         break;
-      case "balance":
+      case "services":
         data = {
-          title: "BALANCE",
-          isMoney: true,
-          count: 100,
-          link_title: "See details",
-          link: '/home',
+          title: "SERVICES",
+          isMoney: false,
+          count: rdcr_services.length,
+          link_title: "View all services",
+          link: '/services',
           icon: (
             <AccountBalanceWalletOutlinedIcon
               className="icon"
@@ -108,13 +120,13 @@ const Widget = ({ type }) => {
           </span>
           <Link to={`${data.link}`} style={{ textDecoration: "none" }} className="link">{data.link_title}</Link>
         </div>
-        <div className="right">
+        {/* <div className="right">
           <div className="percentage positive">
             <KeyboardArrowUpIcon />
             {diff} %
           </div>
           {data.icon}
-        </div>
+        </div> */}
       </div>
     );
   };

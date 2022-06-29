@@ -1,6 +1,5 @@
 import  { useState } from "react";
-// import {getVideoGameByName} from '../../redux/action'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import swal from "sweetalert";
 import { getPublicationsName } from "../redux/action";
@@ -9,8 +8,7 @@ import { getPublicationsName } from "../redux/action";
 
 const SearchGroup = ({msg}) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState();
-  const publication = useSelector((state) => state.Publications);
+  const [name, setName] = useState("");
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -22,7 +20,6 @@ const SearchGroup = ({msg}) => {
     if(name === "") swal({text: "Please enter a name", icon: "warning"});
     else {     
         dispatch(getPublicationsName(name));
-        // publication.length < 1 ? msg("No match found") : msg("");
         setName("");
      }    
   }
@@ -49,12 +46,11 @@ export default SearchGroup;
 //---------------------------------------------------------------------------
 
 const MyForm = styled.form`
-  @media (min-width: 400px) {
-    width: 36vw;
-    margin: 0 2vw;
+  margin: 0 2vw 3vh;
+  @media (min-width: 767px) {
+    width: 100%;
   }
-  margin: 222px 0;
-  width: 100%;
+  width: 70%;
   height: 40px;
   border: #dfe1e500;
   display: flex;
