@@ -45,11 +45,9 @@ function App() {
       <Route exact path="/login/:registerError" element={<Login />} />
       <Route exact path="/" element={<LandingPage />} />
       <Route path="/detail/:id" element={<Detail />} />
-     
-
+      <Route path="/favorites/:id" element={<Favorites />} />
       <Route exact path="/mercado/success" element={<MercadoPagoSuccess />} />
       <Route exact path="/mercado" element={<MercadoPago />} />
-
       <Route path="/payment/:id" element={<Payment />} />
       <Route exact path="/home" element={<Home />} />
       <Route path="*" element={<NotFound />} />
