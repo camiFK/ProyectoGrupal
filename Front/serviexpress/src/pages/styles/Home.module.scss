@@ -5,17 +5,20 @@
     position: relative;
     justify-content: center;
     gap: 1em;
-    margin-left: 10%;
+    margin-left: 11%;
   }
 
-.switchs{
+.switchprice{
   position:absolute;
-  // background-color: #FCDC3C;
-  width: 140px;
-  margin-left: 3%;
-  margin-top: 13%;
+  font-size: 16px;
+  margin-left: 2%;
+  margin-top: 20%;
+  
 }
-
+.filtercategories{
+  position:relative;
+ 
+}
 .container{
   display: flex;
   flex-direction: column;

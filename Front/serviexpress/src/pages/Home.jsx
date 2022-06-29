@@ -10,7 +10,7 @@ import {
   getAllCategories,
 } from "../redux/action";
 import CardPublications from "../components/CardPublications/CardPublications";
-import FilterByCategories from "../components/Filters/FilterByCategories";
+import {FilterByCategories,RadioButtonsGroup} from "../components/Filters/Filters";
 import Pagination from "../components/Pagination/Pagination";
 import Loading from "../components/Loading/Loading.js";
 import NavBar from "../components/NavBar/NavBar";
@@ -83,6 +83,10 @@ export default function Home() {
   return (
     <div className={Styles.container}>
       <NavBar msg={msg}></NavBar>
+    
+      <div className={Styles.filtercategories}>
+      <FilterByCategories />
+      </div>
       {msgSearch && (
         <Alert
           severity="error"
@@ -92,13 +96,14 @@ export default function Home() {
         </Alert>
       )}
 
-      <FilterByCategories />
-
-      <div className={Styles.switchs}>
-        <SwitchesGroup />
+      <div className={Styles.switchprice} >
+      
+      <RadioButtonsGroup/>  
       </div>
+      
 
       <div>
+      
         <div className={Styles.homepaginate}>
           <Pagination
             value={allPublications.length}
@@ -134,8 +139,9 @@ export default function Home() {
           <CircularProgress />
         )}
       </div>
-
+    
       <div className="logos"></div>
+     
     </div>
   );
 }

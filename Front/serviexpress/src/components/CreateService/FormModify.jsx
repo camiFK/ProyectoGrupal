@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MySelectCategory, MySelectTwo } from "../../elements/SelectMUI";
 import { MyButtonTwo, MyTextField } from "../../elements/Forms";
 import { MultiImgsUpload } from "../UploadImg";
-import "./Styles.scss";
+import StylesForm from "./StylesForm.module.scss";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import { useDispatch, useSelector } from "react-redux";
 import { act_getPublicationByUser, getPublicationId, jalz_getAllCategories } from "../../redux/action";
@@ -124,11 +124,11 @@ const FormModify = ({ publicationID }) => {
   };
 
   return (
-    <section className="Comp-FormModify">
+    <section className={StylesForm.CompFormModify}>
       <SearchAppBar />
 
-      <form onSubmit={mSubmit} className="modifyForm-content">
-        <h5 style={{ textAlign: "center", width: "100" }}>
+      <form onSubmit={mSubmit} className={StylesForm.modifyFormcontent}>
+        <h5 className={StylesForm.h5form}>
           Edit Publication N°: {publicationID}
         </h5>
         <FormControlLabel
@@ -148,12 +148,7 @@ const FormModify = ({ publicationID }) => {
           }
         />
 
-        <MyTextField
-          sx={{
-            fieldset: {
-              borderColor: "#fcdc3c !important",
-            },
-          }}
+        <MyTextField className={StylesForm.MyTextField}
           label="Title"
           placeholder="Title of service"
           value={publicationData.n_title}
@@ -176,12 +171,7 @@ const FormModify = ({ publicationID }) => {
           pValue={subCategory}
         />
 
-        <MyTextField
-          sx={{
-            fieldset: {
-              borderColor: "#fcdc3c !important",
-            },
-          }}
+        <MyTextField className={StylesForm.MyTextField}
           label="Description"
           placeholder="Description"
           value={publicationData.n_someDetail}
@@ -192,13 +182,8 @@ const FormModify = ({ publicationID }) => {
             })
           }
         />
-        <MyTextField
+        <MyTextField className={StylesForm.MyTextField}
           required
-          sx={{
-            fieldset: {
-              borderColor: "#fcdc3c !important",
-            },
-          }}
           label="MIN PRICE"
           type="number"
           value={publicationData.n_price}
@@ -213,12 +198,7 @@ const FormModify = ({ publicationID }) => {
           }}
         />
 
-        <MyTextField
-          sx={{
-            fieldset: {
-              borderColor: "#fcdc3c !important",
-            },
-          }}
+        <MyTextField className={StylesForm.MyTextField}
           id="outlined-multiline-static"
           label="Detail Of Publication"
           multiline

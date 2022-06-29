@@ -1,4 +1,3 @@
-
 import SideBarProfile from "./SideBarProfile";
 import Navbar from '../NavBar/NavBar'
 import ProfileId from './ProfileId';
@@ -11,21 +10,13 @@ import {useSelector,useDispatch} from 'react-redux';
 
 export const ListProfile = () => {
 
-
-
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
 
     useEffect(() => {
       dispatch(getUser());
 
-
-
     },[dispatch])
-
-
-
-
 
     return <div>    
             <Navbar />

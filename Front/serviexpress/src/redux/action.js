@@ -172,8 +172,7 @@ export const getAllCategories = () => {
   return async (dispatch) => {
     try {
       const json = await axios.get(`/categories`);
-      console.log(json.data);
-      return dispatch({
+        return dispatch({
         type: "GET_CATEGORIES",
         payload: json.data.map((el) => {
           return { id: el.id, name: el.name };
@@ -552,28 +551,9 @@ export function postForm2(input) {
 }
 
 export function filterprice(value) {
-  return async (dispatch) => {
+  return (dispatch) => {
     try {
-      let response =
-        value === "range1"
-          ? (await axios.get("/publications")).data.filter((a) => a.price < 500)
-          : value === "range2"
-          ? (await axios.get("/publications")).data.filter(
-              (a) => a.price >= 500 && a.price < 2000,
-            )
-          : value === "range3"
-          ? (await axios.get("/publications")).data.filter(
-              (a) => a.price >= 2000 && a.price < 4000,
-            )
-          : value === "range4"
-          ? (await axios.get("/publications")).data.filter(
-              (a) => a.price >= 4000,
-            )
-          : value === "all"
-          ? (await axios.get("/publications")).data
-          : await axios.get("/publications");
-      console.log("holas");
-      console.log(response);
+      let response = value
       dispatch({ type: "FILTER_PRICE", payload: response });
     } catch (error) {
       console.log(error);
