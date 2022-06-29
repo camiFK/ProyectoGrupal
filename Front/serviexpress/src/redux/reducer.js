@@ -239,6 +239,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         Publications: [],
+        favorites: {},
         rdcr_isAuth: false,
         rdcr_user: {},
         user: {},
