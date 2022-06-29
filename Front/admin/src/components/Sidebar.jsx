@@ -89,10 +89,10 @@ const Sidebar = () => {
             <DisplaySettingsIcon className="iconn" />
             <span>Logs</span>
           </li> */}
-          <li>
+          {/* <li>
             <SettingsIcon className="iconn" />
             <span>Settings</span>
-          </li>
+          </li> */}
           <p className="title">USER</p>
           <li>
             <ManageAccountsIcon className="iconn" />

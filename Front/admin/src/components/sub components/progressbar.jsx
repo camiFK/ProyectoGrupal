@@ -56,8 +56,8 @@ export default function CircularStatic({ value, text }) {
   React.useEffect(() => {
     if (progress < value) {
       const timer = setInterval(() => {
-        setProgress(progress + 10);
-      }, 300);
+        setProgress(progress + 1);
+      }, 30);
 
       return () => clearInterval(timer);
     }

@@ -14,10 +14,10 @@ const Navbar = () => {
   return (
     <div className="navbarr">
     <div className="wrapper">
-      {/* <div className="search">
-        <input type="text" placeholder="Search..." />
-        <SearchIcon />
-      </div> */}
+      <div className="search">
+        {/* <input type="text" placeholder="Search..." />
+        <SearchIcon /> */}
+      </div>
       <div className="items">
         <div className="itemm">
           <SwitchDark/>
@@ -27,18 +27,18 @@ const Navbar = () => {
           English
         </div>
         <div className="itemm">
-          <FullscreenExitOutlinedIcon className="icon" />
+          {/* <FullscreenExitOutlinedIcon className="icon" /> */}
         </div>
         <div className="itemm">
-          <NotificationsNoneOutlinedIcon className="icon" />
-          <div className="counter">1</div>
+          {/* <NotificationsNoneOutlinedIcon className="icon" />
+          <div className="counter">1</div> */}
         </div>
         <div className="itemm">
-          <ChatBubbleOutlineOutlinedIcon className="icon" />
-          <div className="counter">2</div>
+          {/* <ChatBubbleOutlineOutlinedIcon className="icon" />
+          <div className="counter">2</div> */}
         </div>
         <div className="itemm">
-          <ListOutlinedIcon className="icon" />
+          {/* <ListOutlinedIcon className="icon" /> */}
         </div>
         <div className="itemm">
           <img
