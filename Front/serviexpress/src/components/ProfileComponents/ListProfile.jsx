@@ -1,3 +1,4 @@
+
 import SideBarProfile from "./SideBarProfile";
 import Navbar from '../NavBar/NavBar'
 import ProfileId from './ProfileId';
@@ -13,6 +14,8 @@ import {useSelector,useDispatch} from 'react-redux';
 
 export const ListProfile = () => {
 
+
+
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);  
     const budgets = useSelector(state => state.budgetsId);
@@ -22,7 +25,12 @@ export const ListProfile = () => {
       dispatch(getUser());
       dispatch(getBudgets(user.id));
 
-    },[dispatch])
+
+    },[dispatch,user.id])
+
+
+
+
 
     return <div>    
             <Navbar />
