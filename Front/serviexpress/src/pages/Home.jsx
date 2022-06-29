@@ -174,7 +174,8 @@ import Alert from "@mui/material/Alert";
 import { flexbox } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import SwitchesGroup from "../components/Filters/switchprice";
+
+
 export default function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -220,7 +221,7 @@ export default function Home() {
   }, [allPublications]);
 
 
-  return (
+     return (
 
     <div className={Styles.container}>
       <NavBar msg={msg}></NavBar>
@@ -236,20 +237,7 @@ export default function Home() {
           {msgSearch}
         </Alert>
       )}
-
-      <FilterByCategories />
-
-      <div className={Styles.switchs}>
-        <SwitchesGroup />
-      <div className={Styles.switchprice} >
-
-      <RadioButtonsGroup/>  
-      </div>
-
-
-      <div>
-
-        <div className={Styles.homepaginate}>
+      <div className={Styles.divpag }>
           <Pagination
             value={allPublications.length}
             pagination={pagination}
@@ -257,6 +245,13 @@ export default function Home() {
             pages={Math.ceil(allPublications.length / PublicationsPerPage)}
           />
         </div>
+      <div className={Styles.switchprice} >
+      <RadioButtonsGroup/>  
+      </div>
+
+      <div>
+
+       
         {allPublications.length > 0 ? (
           <div className={Styles.serviceshome}>
             {/* {SwichL === true || allPublications.length === 0 ? (
@@ -288,6 +283,6 @@ export default function Home() {
       <div className="logos"></div>
 
     </div>
-    </div>
+    
   )
 }

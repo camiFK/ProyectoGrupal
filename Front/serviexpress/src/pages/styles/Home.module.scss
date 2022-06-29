@@ -59,8 +59,8 @@ color: #000000;
 }
 
   .divpag{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    
     height: 100px;
     justify-content: center;
     gap: 1em;
