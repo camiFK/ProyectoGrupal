@@ -1,9 +1,11 @@
-import StylesForm from "./StylesForm.module.scss";
+import "./Styles.scss";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { act_getPublicationByUser } from "../../redux/action";
+
 import { Toolbar, Tooltip, Typography } from "@mui/material";
+
 import { publicationsColumns } from "./FormatTable";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
@@ -32,7 +34,12 @@ const EnhancedTableToolbar = ({ filter, setFilter }) => {
 
   return (
     <section>
-      <Toolbar className={StylesForm.toolbar}>
+      <Toolbar
+        sx={{
+          padding: "0 !important",
+          width: "70vw",
+        }}
+      >
         <Typography sx={{ flex: "1 1 100%" }} variant="h6" component="div">
           Services
         </Typography>
@@ -124,7 +131,7 @@ const MainPublication = ({ setValueTab, setPublicationID }) => {
       width: 120,
       renderCell: (params) => {
         return (
-          <div className={StylesForm.cellAction}>
+          <div className="cellAction">
             {/* <Link
               to={`/users/${params.row.id}`}
               style={{ textDecoration: "none" }}
@@ -154,12 +161,12 @@ const MainPublication = ({ setValueTab, setPublicationID }) => {
   ];
 
   return (
-    <section className={StylesForm.createServiceListMain}>
+    <section className="createService-ListMain">
       <EnhancedTableToolbar filter={filter} setFilter={setFilter} />
 
       <DataGrid
         sx={{ width: "70vw", height: "69vh" }}
-        className={StylesForm.datagrid}
+        className="datagrid"
         rows={rdcr_publications_by_user}
         columns={publicationsColumns.concat(actionColumn)}
         pageSize={7}
