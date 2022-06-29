@@ -1,5 +1,5 @@
-.CompForm {
-    .createServiceCcontent {
+.Comp-Form {
+    .createService-content {
         margin: 6vh auto;
         width: fit-content;
         display: flex;
@@ -18,36 +18,16 @@
     }
 }
 
-.createServiceListMain {
+.createService-ListMain {
     display: grid;
     place-items: center;
 }
-.FormControlLabel{
-    width: 100%
-}
-.MyTextField{
-    fieldset: {
-        borderColor: #fcdc3c !important
-      }
-}
-.MyTextField2{
-    fieldset: {
-        borderColor: #fcdc3c !important
-      }
-}
-.h5form{
-    text-align: center;
-    width: 100%;
-}
-.toolbar{
-    padding: 0 !important;
-    width: 70vw;
-}
-.CompFormModify {
+
+.Comp-FormModify {
     width: 100%;
     min-height: 70vh;
 
-    .modifyFormcontent {
+    .modifyForm-content {
 
         background-color: rgba(255, 255, 255, 0.26);
         border: 2px solid black;
