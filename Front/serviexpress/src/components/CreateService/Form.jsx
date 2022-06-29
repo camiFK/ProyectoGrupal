@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { MySelect, MySelectTwo } from "../../elements/SelectMUI";
 import { MyButtonTwo, MyTextField } from "../../elements/Forms";
 import { MultiImgs } from "../UploadImg";
-import StylesForm from "./StylesForm.module.scss";
+import "./Styles.scss";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import { useDispatch, useSelector } from "react-redux";
 import { jalz_getAllCategories, createPublication } from "../../redux/action";
 import { FormControlLabel, Switch } from "@mui/material";
 import swal from "sweetalert";
-
+ 
 const Form = () => {
   const [name, setName] = useState("");
   const [Detail, setDetail] = useState("");
@@ -80,11 +80,12 @@ const Form = () => {
   };
 
   return (
-    <main className={StylesForm.CompForm}>
+    <main className="Comp-Form">
 
-    <form onSubmit={mSubmit} className={StylesForm.createServiceContent}>
+    <form onSubmit={mSubmit} className="createService-content">
       <h4>Add Publication</h4>
-      <FormControlLabel className={StylesForm.FormControlLabel}
+      <FormControlLabel
+        sx={{ width: "100%" }}
         label="State"
         labelPlacement="start"
         control={
@@ -96,7 +97,12 @@ const Form = () => {
         }
       />
 
-      <MyTextField className={StylesForm.MyTextField}
+      <MyTextField
+        sx={{
+          fieldset: {
+            borderColor: "#fcdc3c !important",
+          },
+        }}
         label="Title"
         placeholder="Name of service"
         value={name}
@@ -117,7 +123,12 @@ const Form = () => {
         pDad={category}
       />
 
-      <MyTextField className={StylesForm.MyTextField}
+      <MyTextField
+        sx={{
+          fieldset: {
+            borderColor: "#fcdc3c !important",
+          },
+        }}
         id="outlined-multiline-static"
         label="Detail Of Publication"
         multiline
@@ -127,14 +138,24 @@ const Form = () => {
         onChange={(e) => setDetail(e.target.value)}
       />
 
-      <MyTextField className={StylesForm.MyTextField}
+      <MyTextField
+        sx={{
+          fieldset: {
+            borderColor: "#fcdc3c !important",
+          },
+        }}
         label="Description"
         placeholder="Description"
         value={SomeDetail}
         onChange={(e) => setSomeDetail(e.target.value)}
       />
-      <MyTextField className={StylesForm.MyTextField}
+      <MyTextField
         required
+        sx={{
+          fieldset: {
+            borderColor: "#fcdc3c !important",
+          },
+        }}
         label="MIN PRICE"
         type="number"
         value={price}
