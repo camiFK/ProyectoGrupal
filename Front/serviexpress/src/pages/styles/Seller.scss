@@ -1,67 +1,106 @@
-.page-seller{
+.page-seller {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    .seller-one{
+
+    .seller-one {
         width: 100%;
         overflow: hidden;
         height: 100vh;
         display: flex;
         justify-content: center;
         position: relative;
-        img{
+
+        img {
             height: 100%;
         }
-        article{
+
+        article {
             margin-top: calc(100vh - 60vh);
             position: absolute;
             text-align: center;
-            h2{
+
+            h2 {
                 font-weight: bold;
                 color: #fff;
                 margin-bottom: 1rem;
             }
         }
     }
-    .seller-two{
+
+    .seller-two {
         width: 100%;
         // height: 20vh;
         padding: 20px 0;
-        ol{
+
+        ol {
             list-style: none;
             text-align: center;
-            li{
+
+            li {
                 font-size: 2.4rem;
-                strong{
+
+                strong {
                     font-size: 3.4rem;
                 }
             }
         }
     }
-    .seller-three{
+
+    .seller-three {
         width: 100%;
         min-height: 30vh;
     }
-    .seller-four{
+
+    .seller-four {
         width: 100%;
         min-height: 50vh;
         padding: 20px 0;
-        *{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 49px;
+
+        * {
             text-align: center;
         }
-        ul{
+
+        ul {
             list-style: none;
             margin: 0 auto;
-            padding: 0;
-            li{
+            padding: 0 20vw;
+
+            li {
                 margin-bottom: 1rem;
                 font-size: 1.4rem;
             }
-            img{
+
+            img {
                 width: 60px;
                 height: 60px;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .seller-one {
+
+            //  background-color: red;
+            img {
+                border-radius: 50%;
+            }
+        }
+
+        .seller-four {
+            ul {
+                flex-direction: row wrap;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 49px;
+                padding: 0;
             }
         }
     }

@@ -5,6 +5,7 @@ import { MyButton } from "../elements/Forms";
 import { Link } from "react-router-dom";
 import RctBoostCarousel from "../components/Carousel.jsx";
 import Footer from "../components/Footer";
+import { Animated } from "react-animated-css";
 
 const URL = require("./../assets/icons/contrato.png");
 const URL2 = require("./../assets/icons/send.png");
@@ -14,18 +15,21 @@ const Seller = () => {
   return (
     <div className="page-seller">
       <BurgerButton />
-      <figure className="seller-one">
-        <img
-          src="https://i.ibb.co/CmYp4Cq/bg-mobile-first-hero-x2.jpg"
-          alt=""
-        />
-        <article>
-          <h2>Work Your Way You bring the skill. We'll make earning easy</h2>
-          <MyButton>
-            <Link to="/seller/register">Registrarse</Link>
-          </MyButton>
-        </article>
-      </figure>
+      <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+        <figure className="seller-one">
+          <img
+            src="https://i.ibb.co/CmYp4Cq/bg-mobile-first-hero-x2.jpg"
+            alt=""
+          />
+          <article>
+            <h2>Work Your Way You bring the skill. We'll make earning easy</h2>
+            <MyButton sx={{ color: "black", fontWeight: "bold" }}>
+              {/* <Link to="/seller/register">Registrarse</Link> */}
+              More Information
+            </MyButton>
+          </article>
+        </figure>
+      </Animated>
       <aside className="seller-two">
         <ol>
           <li>
@@ -78,7 +82,7 @@ const Seller = () => {
         </ul>
       </article>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };

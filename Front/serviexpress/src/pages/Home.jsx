@@ -185,10 +185,15 @@ export default function Home() {
   const [PublicationsPerPage, setPublicationsPerPage] = useState(12);
   const indexOfLastPublication = CurrentPage * PublicationsPerPage;
   const indexOfFirstPublication = indexOfLastPublication - PublicationsPerPage;
-  const currentServices = allPublications.slice(
-    indexOfFirstPublication,
-    indexOfLastPublication,
-  );
+  let currentServices;
+  if(allPublications.length > 0) {
+    currentServices = allPublications?.slice(
+      indexOfFirstPublication,
+      indexOfLastPublication
+    );
+  } else {
+    currentServices = [];
+  } 
   const { user, errorLogin, rdcr_isAuth } = useSelector((state) => state);
   const [msgSearch, SetMsgSearch] = useState("");
   const sendLogin = window.localStorage.getItem("sendLogin");
