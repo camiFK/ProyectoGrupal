@@ -8,20 +8,21 @@ import {FaStar} from 'react-icons/fa'
 import { useState } from 'react'
 import { postReview } from '../redux/action'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import swal from 'sweetalert'
 
 const Review = () => {
-  
-  const myorder = JSON.parse(localStorage.getItem('order'))
-  console.log(myorder.id)
+
+  const {id} = useParams()
+  console.log(id)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const [input, setInput] = useState({
-    review: '',
-    rating: '',
-    id: myorder.id
+    comment: '',
+    point: '',
+    id: id,
   })
 
   const [rating, setRating] = useState()
@@ -36,7 +37,7 @@ const Review = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(postReview(input))
+    dispatch(postReview(id, input))
     console.log(input)
     swal({
       title: "Review Submitted",
@@ -44,9 +45,9 @@ const Review = () => {
       icon: "success",
     })
     setInput({
-      review: '',
-      rating: '',
-      id: myorder.id
+      comment: '',
+      point: '',
+      id: id
     })
     navigate('/home')
   }
@@ -60,7 +61,7 @@ const Review = () => {
         <h4>Give us your review!</h4>
 
         <Form onSubmit={handleSubmit}>
-         <Form.Control as="textarea" rows={10} placeholder="Write something..." name='review' value={input.review} onChange={(e) => handleChange(e)}/>
+         <Form.Control as="textarea" rows={10} placeholder="Write something..." name='comment' value={input.comment} onChange={(e) => handleChange(e)}/>
 
 
         {[...Array(5)].map((star, i) => {
@@ -69,7 +70,7 @@ const Review = () => {
             <label>
             <input 
             type='radio'
-            name='rating'
+            name='point'
             value={ratingValue}
             onClick={() => setRating(ratingValue)}
             onChange={(e) => handleChange(e)}
@@ -94,7 +95,6 @@ const Review = () => {
            </Form>
         </div>
         
-        <FooterBar />
     </div>
   )
 }

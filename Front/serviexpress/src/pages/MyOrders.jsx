@@ -12,12 +12,15 @@ import { useEffect } from 'react';
 import { Button } from '@mui/material';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const MyOrders = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [orderid, setOrderId] = useState();
 
   useEffect(() => {
     dispatch(getMyOrders())
@@ -59,7 +62,7 @@ const MyOrders = () => {
         <Button 
         variant="contained" 
         color="success"  
-        onClick={handleClick}>
+        onClick={() => handleClick(params.row.id)}>
         Submit a review
         </Button>    
           </div>
@@ -78,8 +81,10 @@ const MyOrders = () => {
     }
   }) 
 
-  const handleClick = () => {
-    navigate('/review')
+  const handleClick = (id) => {
+    setOrderId(id)
+    console.log(id)
+    navigate(`/review/` + id)
   }
 
   return (

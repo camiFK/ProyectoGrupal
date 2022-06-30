@@ -100,7 +100,7 @@ const List = () => {
               <TableCell className="tableCell">{row.service_date}</TableCell>
               <TableCell className="tableCell">{row.publication.price}</TableCell>
               <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
+                <span className={(row.status==='Completed')?"status Completed":"status In_progress"}>{row.status}</span>
               </TableCell>
             </TableRow>
           ))}

@@ -8,7 +8,7 @@ import {
   swich_loading,
   getPublicationsByCategory,
   getAllCategories,
-  getFavorites
+  getFavorites,
 } from "../redux/action";
 import CardPublications from "../components/CardPublications/CardPublications";
 //import FilterByCategories from "../components/Filters/FilterByCategories";
@@ -26,13 +26,18 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import FooterBar from "../components/FooterBar/FooterBar";
 import Sidebar from "../components/Home/Sidebar";
-import {FilterByCategories,RadioButtonsGroup2} from "../components/Filters/Filters";
+import {
+  FilterByCategories,
+  RadioButtonsGroup2,
+} from "../components/Filters/Filters";
 
 export default function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const allPublications = useSelector((state) => state.Publications);
-  const PublicationsCategory = useSelector((state) => state.Publications_by_categories)
+  const PublicationsCategory = useSelector(
+    (state) => state.Publications_by_categories
+  );
   const SwichL = useSelector((state) => state.switchloading);
 
   // console.log(SwichL);
@@ -43,7 +48,7 @@ export default function Home() {
   const indexOfLastPublication = CurrentPage * PublicationsPerPage;
   const indexOfFirstPublication = indexOfLastPublication - PublicationsPerPage;
   let currentServices;
-  if(allPublications.length > 0) {
+  if (allPublications.length > 0) {
     currentServices = allPublications?.slice(
       indexOfFirstPublication,
       indexOfLastPublication
@@ -80,31 +85,30 @@ export default function Home() {
     }
 
     dispatch(getAllCategories());
-    dispatch(getFavorites(user.id))
+    dispatch(getFavorites(user.id));
     setTimeout(() => {
       dispatch(getPublications());
     }, 1000);
-
   }, [dispatch, errorLogin, navigate, sendLogin, rdcr_isAuth, user, session]);
 
   useEffect(() => {
     setCurrentPage((pag) => (pag = 1));
   }, [allPublications]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
-      if(allPublications.length===0 && PublicationsCategory.length!==0)
-      swal({
-        icon: "error",
-        text: 'Sorry! There are no publications yet.',
-      })
+      if (allPublications.length === 0 && PublicationsCategory.length !== 0)
+        swal({
+          icon: "error",
+          text: "Sorry! There are no publications yet.",
+        });
     }, 1000);
-  },[allPublications])
+  }, [allPublications]);
 
   return (
     <Fragment>
       <NavBar msg={msg}></NavBar>
-      
+
       <div className={Styles.filtercategories}>
         <FilterByCategories />
       </div>
@@ -123,7 +127,7 @@ export default function Home() {
 
         <div className={Styles.Home_Main_Content}>
           <section className={Styles.MainSidebar}>
-            <Sidebar/>
+            <Sidebar />
           </section>
 
           <section className={Styles.MainCards}>
@@ -134,9 +138,6 @@ export default function Home() {
                 items={PublicationsPerPage}
                 pages={Math.ceil(allPublications.length / PublicationsPerPage)}
               />
-              <div className={Styles.switchprice} >
-                <RadioButtonsGroup2/>  
-              </div>
             </div>
 
             {allPublications.length > 0 ? (

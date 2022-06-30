@@ -123,21 +123,7 @@ const ProfileUser = () => {
           </div>
         </div>
         <div className={styles["form-container"]}>
-          <div className={styles["nav-bar"]}>
-            <div id="edit" className={styles.link} onClick={handleOption}>
-              Editar perfil
-            </div>
-            <div id="history" className={styles.link} onClick={handleOption}>
-              Ver historial
-            </div>
-            <div
-              id="transactions"
-              className={styles.link}
-              onClick={handleOption}
-            >
-              Transacciones pendientes
-            </div>
-          </div>
+          
           <div>{component ? component : responses()["edit"]()}</div>
         </div>
       </div>

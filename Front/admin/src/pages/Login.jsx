@@ -51,7 +51,7 @@ const Login = () => {
   const [error, setError] = useState(defaultForm);
   const [send, setSend] = useState(false);
   const { loginSuccess, messageLogin } = useSelector((state) => state);
-  const session = window.localStorage.getItem("session");
+  const [sendLogin, setSendLogin] = useState(false);
 
   const handleChange = ({ target: { name, value } }) => {
     setError(
@@ -70,6 +70,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!Object.values(error).some(Boolean)) {
+      setSendLogin(!sendLogin);
       dispatch(
         login({
           username: form.email,
@@ -86,12 +87,14 @@ const Login = () => {
   useEffect(() => {
     if (loginSuccess && send) {
       navigate("/home");
+    } else {
+      swal("Error", "User or password incorrect", "error");
     }
     if (send) {
       swal("message", messageLogin, "success");
       setSend(false);
     }
-  }, [navigate, loginSuccess, messageLogin, send]);
+  }, [dispatch, navigate, loginSuccess, messageLogin, send]);
 
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">

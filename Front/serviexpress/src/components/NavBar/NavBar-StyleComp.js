@@ -22,6 +22,7 @@ const MyHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
   }
   .NavBar-login_user{
     display: flex;

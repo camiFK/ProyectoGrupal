@@ -11,14 +11,7 @@ export const act_themeTogle = () => {
 export const act_getAllUsers = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/users`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
-
+      const { data } = await axios.get("/users?page=1&offset=10&limit=100");
       dispatch({
         type: "GET_ALL_USERS",
         payload: data.users,
@@ -32,13 +25,7 @@ export const act_getAllUsers = () => {
 export const act_getUsersCount = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/users`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get("/users?page=1&offset=10&limit=100");
       dispatch({
         type: "GET_USERS_COUNT",
         payload: data.count,
@@ -52,13 +39,7 @@ export const act_getUsersCount = () => {
 export function act_getUserById(pIdentity) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/users/${pIdentity}`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/users/${pIdentity}`);
       dispatch({
         type: "GET_USER_BY_ID",
         payload: data.user,
@@ -71,13 +52,7 @@ export function act_getUserById(pIdentity) {
 
 export async function act_getOneCategory(pIdentity) {
   try {
-    const { data } = await axios.get(`/categories/${pIdentity}`, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    const { data } = await axios.get(`/categories/${pIdentity}`);
     return data;
   } catch (error) {
     console.log(error);
@@ -87,13 +62,7 @@ export async function act_getOneCategory(pIdentity) {
 export function act_getAllCategories() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/categories/only`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/categories/only`);
       dispatch({
         type: "GET_ALL_CATEGORIES",
         payload: data,
@@ -107,13 +76,7 @@ export function act_getAllCategories() {
 export const act_postCategory = (oCategory) => {
   return async () => {
     try {
-      const data = await axios.post(`/categories`, oCategory, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const data = await axios.post(`/categories`, oCategory);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -124,13 +87,7 @@ export const act_postCategory = (oCategory) => {
 export const act_deleteCategory = (pIdentity) => {
   return async () => {
     try {
-      const data = await axios.delete(`/categories/${pIdentity}`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const data = await axios.delete(`/categories/${pIdentity}`);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -141,13 +98,7 @@ export const act_deleteCategory = (pIdentity) => {
 export const act_getAllServices = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/services`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/services`);
       dispatch({
         type: "GET_ALL_SERVICES",
         payload: data,
@@ -161,13 +112,7 @@ export const act_getAllServices = () => {
 export const act_filterServicesByCategory = (pObj) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/services/category/${pObj.id}`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/services/category/${pObj.id}`);
       //add foreign key to services
       data.forEach((pI) => {
         pI.categories = [pObj];
@@ -192,13 +137,7 @@ export const act_clearServices = () => {
 export function getOrders() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/contracts`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/contracts`);
 
       dispatch({
         type: GET_ORDERS,
@@ -242,13 +181,7 @@ export function login(payload) {
 export function getPublications() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/publications`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/publications`);
 
       dispatch({
         type: "GET_ALL_PUBLICATIONS",
@@ -263,13 +196,7 @@ export function getPublications() {
 export function getContractsPercentage() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/contracts/percentage`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/contracts/percentage`);
 
       dispatch({
         type: "GET_CONTRACTS_PERCENTAGE",
@@ -285,13 +212,7 @@ export function getContractsPercentage() {
 export function getTodayPayments(datas) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/payments`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/payments`);
       if (datas === "all") {
         dispatch({
           type: "GET_PAYMENTS_TODAY",
@@ -319,13 +240,7 @@ export function getTodayPayments(datas) {
 export function getPublicationByYear() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/publications/year`, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const { data } = await axios.get(`/publications/year`);
 
       dispatch({
         type: "GET_PUBLICATIONS_YEAR",

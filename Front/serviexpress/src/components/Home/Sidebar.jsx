@@ -1,13 +1,13 @@
-import { Button } from '@mui/material';
-import React, { Fragment } from 'react'
-import { useDispatch } from 'react-redux';
-import { getPublications } from '../../redux/action';
-import SearchGroup from '../SearchGroup';
+import { Button } from "@mui/material";
+import React, { Fragment } from "react";
+import { useDispatch } from "react-redux";
+import { getPublications } from "../../redux/action";
+import { RadioButtonsGroup2 } from "../Filters/Filters";
+import SearchGroup from "../SearchGroup";
 //import SwitchesGroup from '../Filters/switchprice';
 
 const Sidebar = () => {
-    
-    const xDispatch = useDispatch();
+  const xDispatch = useDispatch();
 
   function handleRefresh(e) {
     e.preventDefault();
@@ -17,27 +17,37 @@ const Sidebar = () => {
 
   return (
     <Fragment>
-        <SearchGroup />
-            {window.location.href.includes("ome") ? (
-              <Button
-                variant="text"
-                onClick={(e) => {
-                  handleRefresh(e);
-                }}
-                sx={{
-                  color: "black",
-                  fontSize: 12,
-                  marginBottom: '24px',
-                }}
-              >
-                🧹(clean filter)
-              </Button>
-            ) : (
-              true
-            )}
-            {/* <SwitchesGroup /> */}
-    </Fragment>
-  )
-}
+      
+      <SearchGroup />
+      {/* ////////////////////////////////////////// */}
+      {window.location.href.includes("ome") ? (
+        <Button
+          variant="text"
+          onClick={(e) => {
+            handleRefresh(e);
+          }}
+          sx={{
+            color: "black",
+            fontSize: 12,
+            marginBottom: "24px",
+          }}
+        >
+          🧹(clean filter)
+        </Button>
+      ) : (
+        true
+      )}{/* <SwitchesGroup /> */}
 
-export default Sidebar
+      {/* ////////////////////////////////////////// */}
+
+      <RadioButtonsGroup2 />
+
+      {/* ////////////////////////////////////////// */}
+
+      <RadioButtonsGroup2 />
+
+    </Fragment>
+  );
+};
+
+export default Sidebar;

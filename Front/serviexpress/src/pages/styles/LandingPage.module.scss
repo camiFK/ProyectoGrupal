@@ -8,8 +8,7 @@
 }
 
 .landingctn {
-    display: flex;
-    flex-direction: column;
+
     width: 100%;
     min-height: 100vh;
     text-align: center;
@@ -26,8 +25,7 @@
 }
 
 .descriptionctn {
-    position: absolute;
-    top: 80px;
+    top: 70px;
     width: 100%;
     height: 80px;
     background-color: rgb(255, 222, 6);
@@ -38,27 +36,28 @@
 
 .description {
    font-size: 20px;
-   padding: 5px;
    font-family: 'Charis SIL', serif;
 }
 
 .subtitle {
     width: 100%;
     display: flex;
-    position: absolute;
     top: 180px;
     font-size: 20px;
     align-items: center;
     justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .carousel {
-    position: absolute;
     top: 250px;
     width: 100%;
     justify-content: center;
     text-align: center;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 35px;
 }
 
 .image {
@@ -71,7 +70,6 @@
     height: 35px;
     display: flex;
     align-items: center;
-    position: absolute;
     bottom: 0px;
     background-color: rgb(242, 229, 206);
 }

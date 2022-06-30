@@ -1205,6 +1205,16 @@ const fxuser = async function() {
         }]
     });
     a.createFavorite();
+    a = await User.create({
+      email: 'admin123@hotmail.com',
+      password: '$2a$10$.Hv7nXHXSxSpDyCnpHXDyO5qfaL57BaMscsRFfivZhM6vsSNCqpJW',
+      name: 'VICTORIA',
+      last_name: 'BASTARDES SOTO',
+      country: 'España',
+      province_state: 'Tarragona',
+      rol: 'admin',
+      description: 'Seller',
+    })
   } catch (error) {
     console.log(error);
   }

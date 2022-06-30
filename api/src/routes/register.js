@@ -28,6 +28,7 @@ const registerGoogle = new GoogleStrategy(
     });
 
     if (created) {
+      user.createFavorite();
       cb(null, user);
     } else {
       cb(null, { message: 'User already registered' });

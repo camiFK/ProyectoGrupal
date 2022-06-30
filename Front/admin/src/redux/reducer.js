@@ -141,6 +141,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loginSuccess: false,
       };
+    case "LOGOUT": {
+      return {
+        ...state,
+        loginSucess: false,
+      };
+    }
     default:
       return state;
   }

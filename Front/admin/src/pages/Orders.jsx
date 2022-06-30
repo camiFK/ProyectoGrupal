@@ -44,7 +44,7 @@ const rows = [
   createData('Mariana', 318, 0, 81, 2.0),
   createData('Fabian', 360, 19.0, 9, 37.0),
   createData('Julio', 437, 18.0, 63, 4.0),
-];
+]; 
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -78,6 +78,12 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
+    id: 'id',
+    numeric: true,
+    disablePadding: false,
+    label: 'Contract ID',
+  },
+  {
     id: 'avatar',
     numeric: false,
     disablePadding: false,
@@ -85,25 +91,14 @@ const headCells = [
 
   },
   {
-    id: 'id',
-    numeric: false,
-    disablePadding: false,
-    label: 'ID Order',
-  },
-    {id: 'name',
-    numeric: false,
-    disablePadding: false,
-    label: 'Name ',
-  },
-  {
     id: 'serviceId',
     numeric: true,
     disablePadding: false,
-    label: 'ID del servicio',
+    label: 'Service ID',
   },
   {
     id: 'service',
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: 'Service',
   },
@@ -114,8 +109,20 @@ const headCells = [
     label: 'Price',
   },
   {
-    id: 'status',
+    id: 'customerId',
     numeric: true,
+    disablePadding: false,
+    label: 'Customer ID ',
+  },
+  {
+    id: 'customer',
+    numeric: false,
+    disablePadding: false,
+    label: 'Customer Name',
+  },
+  {
+    id: 'status',
+    numeric: false,
     disablePadding: false,
     label: 'Status',
   },
@@ -309,27 +316,26 @@ export default function EnhancedTable() {
                         
                       }}
                     >
-
-                      <TableCell >
-                      <Avatar alt="avatar" src={order.publication && order.publication.album[0]} />
-                      </TableCell>
                       <TableCell
                         component="th"
                         id={labelId}
                         scope="row"
-                        padding="none"
-                        
+                        align="center"
                       >
-                        {order.name}
+                        {order.id}
                       </TableCell>
-                      <TableCell align="center">{order.calories}</TableCell>
-                      <TableCell align="center">{order.fat}</TableCell>
-                      <TableCell align="center">{order.carbs}</TableCell>
-                      <TableCell align="center">{order.protein}</TableCell>
-                      <TableCell align="center">{order.calories}</TableCell>
-                      <TableCell align="center">{order.fat}</TableCell>
-                      <TableCell align="center">{order.carbs}</TableCell>
-                      </TableRow>
+                      <TableCell align="center" >
+                      <Avatar alt="avatar" src={order.publication && order.publication.album[0]} />
+                      </TableCell>
+                      
+                      <TableCell align="center">{order.publication.id}</TableCell>
+                      <TableCell align="center">{order.publication.title}</TableCell>
+                      <TableCell align="center">{order.publication.price}</TableCell>
+                      <TableCell align="center">{order.user.id}</TableCell>
+                      <TableCell align="center">{`${order.user.last_name}, ${order.user.name}`}</TableCell>
+                      <TableCell align="center">{order.status}</TableCell>
+                      <TableCell align="center">{order.contract_date}</TableCell>
+                      </TableRow> 
                   );
 
 

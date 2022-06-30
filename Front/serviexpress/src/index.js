@@ -44,4 +44,8 @@ $ npm install @mui/x-data-grid
 
 ::CHAT ENGINE
 npm install react-chat-engine --force
+
+::ANIMATIONS
+  565  npm i react-animated-css --save --force
+  563  npm install animate.css --force
 */

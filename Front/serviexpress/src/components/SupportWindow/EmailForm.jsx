@@ -87,7 +87,7 @@ const EmailForm = (props) => {
       <MySectionUnder>
         <Avatar
           alt="Remy Sharp"
-          src="https://i.ibb.co/nfPP3tS/OIP.jpg"
+          src="https://i.ibb.co/k93Gs5q/live-chat.png"
           sx={{
             width: 56,
             height: 56,

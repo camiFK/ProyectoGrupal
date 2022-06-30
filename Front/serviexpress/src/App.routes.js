@@ -63,7 +63,7 @@ function App() {
       <Route path="/profile/seller-reputation" element={<ListSellerReputation />} />
       <Route path="/profile/buyer-reputation" element={<ListBuyerReputation />} />
       <Route path="/support" element={<CustomerSupport />} />
-      <Route path="/review" element={<Review />} />
+      <Route path="/review/:id" element={<Review />} />
     </Routes>
   );
 }
