@@ -49,7 +49,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState(defaultForm);
   const [error, setError] = useState(defaultForm);
-  const { loginSucess } = useSelector((state) => state);
+  const [send, setSend] = useState(false);
+  const { loginSuccess, messageLogin } = useSelector((state) => state);
+  const session = window.localStorage.getItem("session");
 
   const handleChange = ({ target: { name, value } }) => {
     setError(
@@ -74,16 +76,22 @@ const Login = () => {
           password: form.password,
         }),
       );
+    } else {
+      swal("pending", "the fields is required", "error");
     }
     setForm(defaultForm);
+    setSend(true);
   };
 
   useEffect(() => {
-    if (loginSucess) {
-      swal("Welcome", "Login correctly", "success");
+    if (loginSuccess && send) {
       navigate("/home");
     }
-  }, [navigate, loginSucess]);
+    if (send) {
+      swal("message", messageLogin, "success");
+      setSend(false);
+    }
+  }, [navigate, loginSuccess, messageLogin, send]);
 
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">

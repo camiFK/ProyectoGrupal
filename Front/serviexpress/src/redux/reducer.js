@@ -13,7 +13,6 @@ import {
   GET_BUDGETS,
   CREATE_USER_CHAT,
   CREATE_USER_CHAT_ENGINE,
-  
 } from "./action";
 const initialState = {
   rdcr_isAuth: window.sessionStorage.getItem("token"),
@@ -95,7 +94,7 @@ const initialState = {
   rdcr_publications_by_user: [],
   orders: [],
   Publications_by_categories: [],
-  review: []
+  review: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -117,7 +116,6 @@ const rootReducer = (state = initialState, action) => {
         Publications: action.payload,
       };
     case "GET_CATEGORIES":
-   
       return {
         ...state,
         categories: action.payload,
@@ -161,24 +159,24 @@ const rootReducer = (state = initialState, action) => {
         filteredCategories: [...filtered],
       };
 
-      case "FILTER_PRICE":
-        let filteredCategories = state.Publications_by_categories
-        let response =
+    case "FILTER_PRICE":
+      let filteredCategories = state.Publications_by_categories;
+      let response =
         action.payload === "range1"
-            ? filteredCategories.filter((a) => a.price < 500)
-            : action.payload === "range2"
-            ? filteredCategories.filter((a) => a.price >= 500 && a.price < 2000)
-            : action.payload === "range3"
-            ? filteredCategories.filter((a) => a.price >= 2000 && a.price < 4000)
-            : action.payload === "range4"
-            ? filteredCategories.filter((a) => a.price >= 4000)
-            : action.payload === "all"
-            ? filteredCategories
-            : filteredCategories
-        return {
-          ...state,
-          Publications: response,
-        };
+          ? filteredCategories.filter((a) => a.price < 500)
+          : action.payload === "range2"
+          ? filteredCategories.filter((a) => a.price >= 500 && a.price < 2000)
+          : action.payload === "range3"
+          ? filteredCategories.filter((a) => a.price >= 2000 && a.price < 4000)
+          : action.payload === "range4"
+          ? filteredCategories.filter((a) => a.price >= 4000)
+          : action.payload === "all"
+          ? filteredCategories
+          : filteredCategories;
+      return {
+        ...state,
+        Publications: response,
+      };
     case "GET_USER":
       window.sessionStorage.setItem(
         "token",
@@ -293,7 +291,8 @@ const rootReducer = (state = initialState, action) => {
       window.sessionStorage.setItem(
         "token",
         payload.email + "/" + payload.password,
-      ); //>>>>obs
+      );
+      window.sessionStorage.setItem("user", JSON.stringify(payload));
       return {
         ...state,
         user: payload,
@@ -374,7 +373,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         review: action.payload,
-      }
+      };
 
     case SEND_BUDGET:
       return {
@@ -387,30 +386,26 @@ const rootReducer = (state = initialState, action) => {
         ...state,
       };
 
-      case GET_CHAT:   
-        return{
-            ...state,
-            chat: action.payload,
-        }
+    case GET_CHAT:
+      return {
+        ...state,
+        chat: action.payload,
+      };
 
-      case GET_BUDGETS:
-       
-         return {
-              ...state,
-              budgetsId: action.payload,
+    case GET_BUDGETS:
+      return {
+        ...state,
+        budgetsId: action.payload,
+      };
+    case CREATE_USER_CHAT:
+      return {
+        ...state,
+      };
 
-          } 
-      case CREATE_USER_CHAT:
-          return {
-              ...state,
-
-          }
-
-      case CREATE_USER_CHAT_ENGINE:
-        return {
-            ...state,
-
-        }
+    case CREATE_USER_CHAT_ENGINE:
+      return {
+        ...state,
+      };
 
     default:
       return state;

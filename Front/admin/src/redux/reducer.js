@@ -11,13 +11,14 @@ const initialState = {
   rdcr_servicesBckp: [],
   orders: [],
   rdcr_admin: {},
-  loginSucess: false,
+  loginSuccess: false,
   orders_percentage: 0,
   payments_today: [],
   payments_today_length: 0,
   payments_today_amount: 0,
   publications: [],
   publications_year: [],
+  messageLogin: "",
 };
 const rootReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -79,9 +80,18 @@ const rootReducer = (state = initialState, action) => {
       };
     }
     case "LOGIN_ADMIN": {
+      window.localStorage.setItem("session", true);
       return {
         ...state,
-        loginSucess: true,
+        loginSuccess: true,
+        messageLogin: payload,
+      };
+    }
+    case "LOGIN_ADMIN_ERROR": {
+      return {
+        ...state,
+        loginSuccess: false,
+        messageLogin: payload,
       };
     }
     case "GET_ALL_PUBLICATIONS": {
@@ -124,6 +134,13 @@ const rootReducer = (state = initialState, action) => {
         publications_year: action.payload,
       };
     }
+    case "LOGOUT_SESSION":
+      console.log(payload);
+      window.localStorage.removeItem("session");
+      return {
+        ...state,
+        loginSuccess: false,
+      };
     default:
       return state;
   }

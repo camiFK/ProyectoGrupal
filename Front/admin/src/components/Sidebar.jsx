@@ -11,15 +11,22 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Link, useNavigate } from "react-router-dom";
-import { act_themeDark, act_themeLight } from "../redux/action";
-import { useDispatch } from "react-redux";
+import { act_themeDark, act_themeLight, logout } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 import CategoryIcon from "@mui/icons-material/Category";
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import swal from "sweetalert";
+import { useEffect } from "react";
 
 const Sidebar = () => {
   const xDispatch = useDispatch();
-
   const xNavigate = useNavigate();
+  // const session = window.localStorage.getItem("session");
+  const handleLogout = () => {
+    swal("Logout", "Logout successfully", "success");
+    xNavigate("/");
+    xDispatch(logout());
+  };
 
   return (
     <div className="sidebarr">
@@ -62,10 +69,10 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/orders" style={{ textDecoration: "none" }}>
-          <li>
-            <CreditCardIcon className="iconn" />
-            <span>Orders</span>
-          </li>
+            <li>
+              <CreditCardIcon className="iconn" />
+              <span>Orders</span>
+            </li>
           </Link>
           {/* <p className="title">USEFUL</p>
           <li>
@@ -77,7 +84,11 @@ const Sidebar = () => {
             <span>Notifications</span>
           </li> */}
           <p className="title">SERVICE</p>
-          <li onClick={() => {xNavigate('/attendance')}}>
+          <li
+            onClick={() => {
+              xNavigate("/attendance");
+            }}
+          >
             <SupportAgentIcon className="iconn" />
             <span>Customer Support</span>
           </li>
@@ -100,7 +111,7 @@ const Sidebar = () => {
           </li>
           <li>
             <ExitToAppIcon className="iconn" />
-            <span>Logout</span>
+            <span onClick={handleLogout}>Logout</span>
           </li>
         </ul>
       </div>

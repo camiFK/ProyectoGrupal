@@ -11,13 +11,14 @@ import Attendance from "./pages/Attendance";
 
 function App() {
   const { rdcr_darkMode } = useSelector((state) => state);
+  const session = window.localStorage.getItem("session");
 
   return (
     <div className={rdcr_darkMode ? "app dark" : "app"}>
       <Routes>
         <Route path="/">
           <Route index element={<Login />} />
-          <Route path="home" element={<Home />} />
+          {session && <Route path="home" element={<Home />} />}
           <Route path="users">
             <Route index element={<List pType={"USER"} />} />
             <Route path=":userId" element={<Single />} />

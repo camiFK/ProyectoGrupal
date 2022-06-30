@@ -113,10 +113,16 @@ router.post(
     failureRedirect: '/login/local/error'
   }),
   (req, res) => {
+    console.log(req.user);
     const { admin } = req.query;
-    if (req.user.rol === 'admin' && admin) {
-      return res.status(200).send({
-        message: 'Login successfully'
+    if (admin) {
+      if (req.user.rol.toLowerCase() === 'admin') {
+        return res.status(200).send({
+          message: 'Login successfully'
+        });
+      }
+      return res.send({
+        message: 'You are not an administrator'
       });
     }
 

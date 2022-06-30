@@ -213,18 +213,26 @@ export function getOrders() {
 export function login(payload) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post("/login?admin=true", payload, {
+      const {
+        data: { message },
+      } = await axios.post("/login?admin=true", payload, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
       });
-
-      dispatch({
-        type: "LOGIN_ADMIN",
-        payload: data.message,
-      });
+      if (message === "Login successfully") {
+        dispatch({
+          type: "LOGIN_ADMIN",
+          payload: message,
+        });
+      } else {
+        dispatch({
+          type: "LOGIN_ADMIN_ERROR",
+          payload: message,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -321,6 +329,27 @@ export function getPublicationByYear() {
 
       dispatch({
         type: "GET_PUBLICATIONS_YEAR",
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function logout() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post("/login/logout", {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+
+      dispatch({
+        type: "LOGOUT_SESSION",
         payload: data,
       });
     } catch (error) {
