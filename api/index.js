@@ -5,9 +5,8 @@ const server = require('./server');
 
 const { PORT } = process.env || 3000;
 
-connection.sync({ force: true }).then(() => {
+connection.sync({ force: false }).then(() => {
   server.listen(PORT, () => {
     console.log(`Servidor levantado en el puerto: ${PORT}`);
   });
 });
- 
