@@ -19,6 +19,8 @@ const fxuser = async function() {
             {commenter:"Nicolas Garcia",comment:"No se pudo completar el trabajo por un problema mio",rating:4,buyer_avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"},
   
         ],
+            seller_points: 8,
+            seller_reviews: 2,
             seller_reputation: 4,
             seller_opinions:[{commenter:"Fulano Perez",comment:"Que buen servicio",rating:5},{commenter:"Mengano Gomez",comment:"Trabajo decente, medio caro",rating:3}],
         })
@@ -39,6 +41,8 @@ const fxuser = async function() {
             {commenter:"Alicia Sanchez",comment:"Buen trabajo",rating:4,buyer_avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"},
             {commenter:"Damian Juarez",comment:"Lo recomiendo muchisimo",rating:5,buyer_avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTB8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"}
         ],
+            seller_points: 6,
+            seller_reviews: 2,
             seller_reputation: 4,
             seller_opinions:[{commenter:"Jorge Juarez",comment:"Mal Servicio",rating:1},{commenter:"Jhonatan Perez",comment:"Muy puntual y responsable",rating:5}],
         }
@@ -62,6 +66,8 @@ const fxuser = async function() {
             {commenter:"Alicia Sanchez",comment:"Buen trabajo",rating:4,buyer_avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"},
             {commenter:"Damian Juarez",comment:"Lo recomiendo muchisimo",rating:5,buyer_avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTB8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"}
         ],
+        seller_points: 6,
+        seller_reviews: 2,
         seller_reputation: 4,
         seller_opinions: [{ commenter: 'Jorge Juarez', comment: 'Mal Servicio', rating: 1 }, { commenter: 'Jhonatan Perez', comment: 'Muy puntual y responsable', rating: 5 }]
       });
@@ -80,7 +86,10 @@ const fxuser = async function() {
         buyer_reputation: 3,
         buyer_opinions: [{ commenter: 'Alicia Sanchez', comment: 'Que agradable sujeto', rating: 3, buyer_avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' },
           { commenter: 'Jorge Flores', comment: 'Lo recomiendo', rating: 5, buyer_avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjZ8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' }],
-        seller_reputation: 3,
+        
+          seller_points: 8,
+          seller_reviews: 2,
+          seller_reputation: 3,
         seller_opinions: [{ commenter: 'Armando Paredes', comment: 'Se desempeño muy bien y termino antes de tiempo', rating: 5 }, { commenter: 'Juan Lopez', comment: 'Se tardo mucho en terminar', rating: 3 }]
       });
     damian.createFavorite();
@@ -101,8 +110,10 @@ const fxuser = async function() {
           { commenter: 'Alicia Sanchez', comment: 'Buen trabajo', rating: 4, buyer_avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' },
           { commenter: 'Damian Juarez', comment: 'Lo recomiendo muchisimo', rating: 5, buyer_avatar: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTB8fHBlcmZpbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' }
         ],
-        seller_reputation: 4,
-        seller_opinions: [{ commenter: 'Fulano Perez', comment: 'Cumplido y bien hecho', rating: 5 }, { commenter: 'Fernando Vazquez', comment: 'Me gusto su trabajo', rating: 4 }]
+        seller_points: 10,
+        seller_reviews: 2,
+        seller_reputation: 5,
+        seller_opinions: [{ commenter: 'Fulano Perez', comment: 'Cumplido y bien hecho', rating: 5 }, { commenter: 'Fernando Vazquez', comment: 'Me gusto su trabajo', rating: 5 }]
       });
     lucas.createFavorite();
 
@@ -136,12 +147,14 @@ const fxuser = async function() {
           rating: 1,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/ruben.png'
         }],
-      seller_reputation: 4,
+        seller_points: 9,
+        seller_reviews: 3,
+      seller_reputation: 3,
       seller_opinions: [
         {
           commenter: 'CATALINA RAYA GARCIA',
           comment: 'No cumplio con lo prometido',
-          rating: 5
+          rating: 4
         },
         {
           commenter: 'CRISTOBAL AYALA FERRERAS',
@@ -186,12 +199,14 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/sol.png'
         }],
-      seller_reputation: 3,
+        seller_points: 6,
+        seller_reviews: 3,
+      seller_reputation: 2,
       seller_opinions: [
         {
           commenter: 'PAULETTE RAYA GAVILAN',
           comment: 'Inpuntuales.',
-          rating: 5
+          rating: 3
         },
         {
           commenter: 'GUIDO MORALES GESE',
@@ -236,12 +251,14 @@ const fxuser = async function() {
           rating: 4,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/almendra.png'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
           commenter: 'FELIPE BAEZ TEJADO',
           comment: 'Siempre nos brindan la mejor atención y el mejor servicio. Muchas gracias por ser una empresa de excelencia.',
-          rating: 2
+          rating: 4
         },
         {
           commenter: 'NICOLAS LÓPEZ DE PABLO GARCIA UCEDA',
@@ -286,6 +303,8 @@ const fxuser = async function() {
           rating: 1,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/daniel.png'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
@@ -296,12 +315,12 @@ const fxuser = async function() {
         {
           commenter: 'FERNANDA BARALDÉS COMAS',
           comment: 'No me gusto la actitud',
-          rating: 4
+          rating: 3
         },
         {
           commenter: 'RUBEN BIDAULT CULLERÉS',
           comment: 'Excelente!!! super recomendable!.',
-          rating: 2
+          rating: 4
         }]
     });
     a.createFavorite();
@@ -336,12 +355,14 @@ const fxuser = async function() {
           rating: 1,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/paloma.png'
         }],
+        seller_points: 12,
+        seller_reviews: 3,
       seller_reputation: 4,
       seller_opinions: [
         {
           commenter: 'DANIEL ANDREU CRUZ',
           comment: 'Barato',
-          rating: 2
+          rating: 3
         },
         {
           commenter: 'ESTEFANIA AROCAS PASADAS',
@@ -386,6 +407,8 @@ const fxuser = async function() {
           rating: 1,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/kuyen.jpg'
         }],
+        seller_points: 6,
+        seller_reviews: 3,
       seller_reputation: 2,
       seller_opinions: [
         {
@@ -436,6 +459,8 @@ const fxuser = async function() {
           rating: 1,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/paloma.png'
         }],
+        seller_points: 15,
+        seller_reviews: 3,
       seller_reputation: 5,
       seller_opinions: [
         {
@@ -446,7 +471,7 @@ const fxuser = async function() {
         {
           commenter: 'SOL BIOSCA FONTANET',
           comment: 'Despacha sus productos a tiempo',
-          rating: 3
+          rating: 5
         },
         {
           commenter: 'CRISTOBAL AYALA FERRERAS',
@@ -486,6 +511,8 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/fernanda.png'
         }],
+        seller_points: 12,
+        seller_reviews: 3,
       seller_reputation: 4,
       seller_opinions: [
         {
@@ -536,6 +563,8 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/kuyen.jpg'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
@@ -586,6 +615,8 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2022/felipe.png'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
@@ -601,7 +632,7 @@ const fxuser = async function() {
         {
           commenter: 'GUIDO MORALES GESE',
           comment: 'Excelente servicio y atención al cliente. 100% recomendable!»',
-          rating: 2
+          rating: 4
         }]
     });
     a.createFavorite();
@@ -636,6 +667,8 @@ const fxuser = async function() {
           rating: 4,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2022/cristobal.png'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
@@ -646,12 +679,12 @@ const fxuser = async function() {
         {
           commenter: 'AMANDA PASCUAL ALOY',
           comment: 'Precio adecuado',
-          rating: 2
+          rating: 3
         },
         {
           commenter: 'TOMAS ZAFRA FIGULS',
           comment: 'Brinda buena atención',
-          rating: 2
+          rating: 3
         }]
     });
     a.createFavorite();
@@ -686,6 +719,8 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/nicolas.png'
         }],
+        seller_points: 15,
+        seller_reviews: 3,
       seller_reputation: 5,
       seller_opinions: [
         {
@@ -696,12 +731,12 @@ const fxuser = async function() {
         {
           commenter: 'SOL BIOSCA FONTANET',
           comment: 'Brinda buena atención',
-          rating: 4
+          rating: 5
         },
         {
           commenter: 'VICTORIA BASTARDES SOTO',
           comment: 'Barato',
-          rating: 4
+          rating: 5
         }]
     });
     a.createFavorite();
@@ -736,6 +771,8 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/nicolas.png'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
@@ -746,7 +783,7 @@ const fxuser = async function() {
         {
           commenter: 'RUBEN BIDAULT CULLERÉS',
           comment: 'Positivo: Calidad, Capacidad de respuesta, Precio, Profesionalismo.   El servicio es excelente.',
-          rating: 3
+          rating: 5
         },
         {
           commenter: 'CESAR BADIA TORNÉ',
@@ -786,6 +823,8 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/daniel.png'
         }],
+        seller_points: 12,
+        seller_reviews: 3,
       seller_reputation: 4,
       seller_opinions: [
         {
@@ -796,7 +835,7 @@ const fxuser = async function() {
         {
           commenter: 'PALOMA ARNAU MORENO',
           comment: 'Excelente servicio y atención !!!  Lo recomiendo ampliamente, me resolvió todas mis dudas además de soporte técnico y asesoría.            Muy agradecido con su servicio.',
-          rating: 1
+          rating: 3
         },
         {
           commenter: 'ANTONIA VALLÉS GIRVENT',
@@ -836,6 +875,8 @@ const fxuser = async function() {
           rating: 4,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2022/antonia.png'
         }],
+        seller_points: 6,
+        seller_reviews: 3,
       seller_reputation: 2,
       seller_opinions: [
         {
@@ -886,6 +927,8 @@ const fxuser = async function() {
           rating: 2,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/paulette.png'
         }],
+        seller_points: 12,
+        seller_reviews: 3,
       seller_reputation: 4,
       seller_opinions: [
         {
@@ -901,7 +944,7 @@ const fxuser = async function() {
         {
           commenter: 'ANTONIA VALLÉS GIRVENT',
           comment: 'Volveria a contratarlo',
-          rating: 2
+          rating: 4
         }]
     });
     a.createFavorite();
@@ -936,6 +979,8 @@ const fxuser = async function() {
           rating: 4,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/pedro.png'
         }],
+        seller_points: 12,
+        seller_reviews: 3,
       seller_reputation: 4,
       seller_opinions: [
         {
@@ -946,7 +991,7 @@ const fxuser = async function() {
         {
           commenter: 'CESAR BADIA TORNÉ',
           comment: 'Excelente atención y profesionalismo, seriedad y oportunidad en las respuestas y apoyo tanto en soporte técnico como vía whatsapp.',
-          rating: 3
+          rating: 4
         },
         {
           commenter: 'PALOMA ARNAU MORENO',
@@ -986,12 +1031,14 @@ const fxuser = async function() {
           rating: 4,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/nicolas.png'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
           commenter: 'FELIPE BAEZ TEJADO',
           comment: 'Me arrepiento de haberlo elegido',
-          rating: 3
+          rating: 2
         },
         {
           commenter: 'AMANDA PASCUAL ALOY',
@@ -1036,6 +1083,8 @@ const fxuser = async function() {
           rating: 3,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/tomas.png'
         }],
+        seller_points: 12,
+        seller_reviews: 3,
       seller_reputation: 4,
       seller_opinions: [
         {
@@ -1051,7 +1100,7 @@ const fxuser = async function() {
         {
           commenter: 'GUIDO MORALES GESE',
           comment: 'Excelente atención y profesionalismo, seriedad y oportunidad en las respuestas y apoyo tanto en soporte técnico como vía whatsapp.',
-          rating: 3
+          rating: 4
         }]
     });
     a.createFavorite();
@@ -1086,6 +1135,8 @@ const fxuser = async function() {
           rating: 3,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2021/almendra.png'
         }],
+        seller_points: 15,
+        seller_reviews: 3,
       seller_reputation: 5,
       seller_opinions: [
         {
@@ -1096,7 +1147,7 @@ const fxuser = async function() {
         {
           commenter: 'FERNANDA BARALDÉS COMAS',
           comment: 'Siempre nos brindan la mejor atención y el mejor servicio. Muchas gracias por ser una empresa de excelencia.',
-          rating: 3
+          rating: 5
         },
         {
           commenter: 'TOMAS ZAFRA FIGULS',
@@ -1136,6 +1187,8 @@ const fxuser = async function() {
           rating: 5,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2022/victoria.png'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
@@ -1186,12 +1239,14 @@ const fxuser = async function() {
           rating: 4,
           buyer_avatar: 'http://www.fpp.uchile.cl/content/perfil/2016/cesar.jpg'
         }],
+        seller_points: 9,
+        seller_reviews: 3,
       seller_reputation: 3,
       seller_opinions: [
         {
           commenter: 'PALOMA ARNAU MORENO',
           comment: 'Positivo: Calidad, Capacidad de respuesta, Precio, Profesionalismo   El servicio es excelente.',
-          rating: 1
+          rating: 2
         },
         {
           commenter: 'DANIEL ANDREU CRUZ',

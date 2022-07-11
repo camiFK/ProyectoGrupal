@@ -157,12 +157,14 @@ exports.updateContractReview = async (contractId, point, comment) => {
   //Agrega el comentario a los existentes
   let opinions = seller.seller_opinions;
   opinions.push(newSellerOpinion)
-
+  point=parseInt(point)
+  console.log(point)
   //Calcular Seller Reputation -->> (seller_points+point)/(seller_review+1)
   const newSellerPoints = seller.seller_points+point
   const newSellerReviews = seller.seller_reviews+1
   const seller_reputation = Math.ceil(newSellerPoints/newSellerReviews);
-
+  console.log(newSellerPoints, newSellerReviews)
+  console.log(seller_reputation)
   
   // Actualizo la review del vendedor con la opinion y la reputacion
 
